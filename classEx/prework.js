@@ -1,12 +1,27 @@
-var num = [1, 2, 3, -1, -2, -3]
+var number = [1, 2, 3, -1, -2, -3]
+
+// console.log(typeof(numArray))
+// var doubler = function () {
+//     for (var i = 0; i < num.length; i++) {
+        
+//         numArray = num[i] + num[i]
+//         console.log(numArray)
+        
+//     }
+// }
+// console.log(doubler());
 
 
-var doubler = function () {
-    for (var i = 0; i < num.length; i++) {
-        var numArray = [];
-        numArray = num[i] + num[i]
-        console.log(numArray)
+var numArray = [];
+function doubles(arr){
+    for(var j = 0; j < arr.length; j++){   
+    numArray = [arr[j] + arr[j]]
+    console.log(numArray)
     }
+    
 }
+console.log(doubles(number))
 
-console.log(doubler())
+function sum(num) {
+    return num + num
+}
