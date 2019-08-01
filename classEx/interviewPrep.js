@@ -36,10 +36,11 @@ function PrimeFactors(n){
 
 console.log(`Prime Factors: ${PrimeFactors(69)}`)
 
-////////////  3.  Fibonacci  (POPULAR QUESTION) ///////////////
+////////////  3a.  Fibonacci  (POPULAR QUESTION) ///////////////
 /////////// How do you get nth Fibonacci numbers? ///////
 ////////// I create an array and start from iterate through. //////////
 ////////// The fibonacci sequence is the sum of the previous two numbers in a sequence is equal to the next number in the sequence starting with 0, 1 the next number is 1; the next sequence is 1, 1 and the next number is 2; the next sequence is 1, 2 and the next number is 3.... etc.; Total Fibonacci so far is: [0, 1, 1, 2, 3, 5, 8, 13...]
+/////////      Runtime Complexity: 0(n)    //////////
 function Fibonacci(n){
     var fibo = [0, 1];
 
@@ -53,8 +54,9 @@ function Fibonacci(n){
 
 console.log(`Fibonacci: ${Fibonacci(10)}`)
 
-///////// Recursive Fibonacci///
+/////////   3b.  Recursive Fibonacci    //////////////////
 //////// for definition on recursive please see this link: https://whatis.techtarget.com/definition/recursion //////
+/////////      Runtime Complexity: 0(2n)    //////////
 function FibonacciRecursive(n){
     if (n <= 1)
     return n;
@@ -63,3 +65,78 @@ function FibonacciRecursive(n){
 }
 
 console.log(`Fibonacci Recursive: ${FibonacciRecursive(12)}`)
+
+
+///////////  4a.  Greatest Common Divisor     ///////////
+function GreatestCOmmonDivisor(a, b){
+    var divisor = 2;
+    greatestDivisor = 1;
+
+    if (a < 2 || b < 2){
+        return 1;
+    }
+
+    while(a >= divisor && b >= divisor){
+        if (a % divisor == 0 && b% divisor == 0) {
+            greatestDivisor = divisor;
+        }
+        divisor ++;
+    }
+    return greatestDivisor;
+}
+
+console.log(GreatestCOmmonDivisor(14, 21));
+
+
+//////////// 4b.  simpler to write: solution and better to answer interview questions with //////
+///////// Recursion is not always best because you risk crashing your memory without an exit because the function calls itself. Some languages are not optimized to handle recursion in comparison to others.
+function GCDivisor(a ,b){
+    if (b == 0){
+        return a;
+    } else {
+        return GCDivisor(b, a % b)
+    }
+}
+
+console.log(GCDivisor(66, 55));
+
+/////////// 5. Remove Duplicates ////////////
+//////// Start Looping and through an object / associated array. If i find an element for the fist time I will its value as true (that will tell me element was added once). If i find an element in the existing object, I will not insert it into the return array.
+function removeDuplicate(arr){
+var exists = {};
+var outArr = [];
+var elm;
+
+for (var i = 0; i < arr.length; i++){
+    elm = arr[i];
+    if (!exists[elm]){
+        outArr.push(elm);
+        exists[elm] = true;
+    }
+}
+return outArr;
+}
+
+arrayOfDuplicates = [1,3,3,3,1,5,6,7,8,1];
+
+console.log(`Array without Duplicates: ${removeDuplicate(arrayOfDuplicates)}`);
+
+////////////// 6. Merg Two Sorted Arrays ///////////////
+function mergeSortedArray(a, b){
+    var merged = [];
+    var aElement = a[0];
+    var bElement = b[0];
+    var i = 1;
+    var j = 1;
+
+    while(aElement || bElement) {
+        if((aElement && !bElement) || aElement < bElement) {
+            merged.push(aElement);
+            aElement = a[i++];
+        } else {
+            merged.push(bElement);
+            bElement = b[j++];
+        }
+    }
+    return merged;
+}
