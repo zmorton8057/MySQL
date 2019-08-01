@@ -85,7 +85,7 @@ function GreatestCOmmonDivisor(a, b){
     return greatestDivisor;
 }
 
-console.log(GreatestCOmmonDivisor(14, 21));
+console.log(`Greatest Divisor: ${GreatestCOmmonDivisor(14, 21)}`);
 
 
 //////////// 4b.  simpler to write: solution and better to answer interview questions with //////
@@ -98,7 +98,7 @@ function GCDivisor(a ,b){
     }
 }
 
-console.log(GCDivisor(66, 55));
+console.log(`Greatest Divisor with Recursion: ${GCDivisor(66, 55)}`);
 
 /////////// 5. Remove Duplicates ////////////
 //////// Start Looping and through an object / associated array. If i find an element for the fist time I will its value as true (that will tell me element was added once). If i find an element in the existing object, I will not insert it into the return array.
@@ -122,21 +122,44 @@ arrayOfDuplicates = [1,3,3,3,1,5,6,7,8,1];
 console.log(`Array without Duplicates: ${removeDuplicate(arrayOfDuplicates)}`);
 
 ////////////// 6. Merg Two Sorted Arrays ///////////////
+///////  Keep a pointer for each array 
 function mergeSortedArray(a, b){
+    /////// empty array to push the sorted arrays into
     var merged = [];
+    /////// starting at the [0] index of the existing first array
     var aElement = a[0];
+    /////// starting at the [0] index of the existing second array
     var bElement = b[0];
+    /////// for iterating to the next index of the existing arrays
     var i = 1;
     var j = 1;
-
+    /////// While it is either a or b
     while(aElement || bElement) {
+    /////// (if this a number and not b number) or (a number is less than b number)
         if((aElement && !bElement) || aElement < bElement) {
+            //////// push a number into the merged array
             merged.push(aElement);
+            //////// then iterate to the next number in a
             aElement = a[i++];
         } else {
+            ////// else push the b number
             merged.push(bElement);
+            //// then iterate to the next number in b
             bElement = b[j++];
         }
     }
-    return merged;
+    return merged; //// returns the new merged number
 }
+
+console.log(`Merge two sorted arrays: ${mergeSortedArray([2, 5, 6, 9], [1, 2, 3])}`)
+
+/////////////   7. Swap Numbers without using a temporary variable  //////////
+function swapNum(a , b){
+    console.log(`Initial Values: a: ${a} b: ${b}`);
+    b = b - a;
+    a = a + b;
+    b = a - b;
+    console.log(`Reassigned Values: a: ${a} b: ${b}`);
+}
+
+swapNum(200, 3)
