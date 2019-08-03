@@ -185,3 +185,69 @@ function reverseB(str){
 }
 
 console.log(reverseB("Hello World"))
+
+
+////// 9. Reverse Words in a sentence////////////
+
+function reverseWords(str){
+    return str.split(' ').reverse().join(' ');
+}
+
+console.log(reverseWords("Hello World"))
+
+//////// 10. Reverse in Place /////////////
+
+function reverseInPlace(str){
+    ///split by space, reverse words, join back together with a space, split reversed words again, reverse words back to their original position, rejoin to make strings
+    return str.split(' ').reverse().join(' ').split('').reverse().join('')
+}
+
+console.log(reverseInPlace("I am a good boy"))
+
+/////////  11. First non-repeating character in a string /////////
+//////// Follow up question: is it case sensitive?
+
+function firstNonRepeatingChar(str){
+    var char;
+    var charCount = {};
+
+    for (var i = 0; i < str.length; i++){
+        char = str[i]
+        if(charCount[char]){
+            charCount[char]++;
+        } else {
+            charCount[char] = 1;
+        }
+            }
+            for (var j in charCount) {
+            if (charCount[j] == 1){
+                return j;
+        }
+    }
+}
+
+console.log(firstNonRepeatingChar("did not find any non repeated Character"))
+
+///////   12. Remove Duplicate Characters in a string ////
+
+function removeDuplicateString(str){
+    var chara;
+    var charaCount = {};
+    var newstr = [];
+
+    for (var i = 0; i < str.length; i++){
+        chara = str[i]
+        if(charaCount[chara]){
+            charaCount[chara]++
+        } else {
+            charaCount[chara] = 1;
+        }
+    }
+    for (var j in charaCount) {
+        if (charaCount[j] == 1){
+            newstr.push(j)
+        }
+        return newstr.join('')
+    }
+}
+console.log(removeDuplicateString('did not find any non repeated Character'))
