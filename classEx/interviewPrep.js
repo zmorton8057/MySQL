@@ -163,3 +163,25 @@ function swapNum(a , b){
 }
 
 swapNum(200, 3)
+
+////////// 8.a  String Reverse with a for loop //////////
+
+function reverse(str){
+    var rtnStr = '';
+    for (var i = str.length - 1; i >= 0; i--){
+        rtnStr += str[i];
+    }
+    return rtnStr;
+}
+console.log(reverse("Hello World"));
+
+///// 8.b String Reverse with built in features ////////////
+
+function reverseB(str){
+    if (!str || str.length < 2){
+        return str;
+    }
+    return str.split('').reverse().join('');
+}
+
+console.log(reverseB("Hello World"))
