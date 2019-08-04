@@ -13,7 +13,7 @@ function IsPrime(n){
 }
 
 console.log(`Is this prime: ${IsPrime(137)}`);
-console.log(IsPrime(237));
+console.log(`Is this prime: ${IsPrime(237)}`);
 
 //////////////  2.   Prime Factors//////////////
 ////// What is run time complexity? Can you make it better?////
@@ -173,7 +173,7 @@ function reverse(str){
     }
     return rtnStr;
 }
-console.log(reverse("Hello World"));
+console.log("Reverse a String A: " + reverse("Hello World"));
 
 ///// 8.b String Reverse with built in features ////////////
 
@@ -184,7 +184,7 @@ function reverseB(str){
     return str.split('').reverse().join('');
 }
 
-console.log(reverseB("Hello World"))
+console.log("Reverse a String B: " + reverseB("Hello World"))
 
 
 ////// 9. Reverse Words in a sentence////////////
@@ -193,7 +193,7 @@ function reverseWords(str){
     return str.split(' ').reverse().join(' ');
 }
 
-console.log(reverseWords("Hello World"))
+console.log("Reverse Words: " + reverseWords("Hello World"))
 
 //////// 10. Reverse in Place /////////////
 
@@ -202,7 +202,7 @@ function reverseInPlace(str){
     return str.split(' ').reverse().join(' ').split('').reverse().join('')
 }
 
-console.log(reverseInPlace("I am a good boy"))
+console.log("String Reverse in Place: " + reverseInPlace("I am a good boy"))
 
 /////////  11. First non-repeating character in a string /////////
 //////// Follow up question: is it case sensitive?
@@ -226,7 +226,7 @@ function firstNonRepeatingChar(str){
     }
 }
 
-console.log(firstNonRepeatingChar("did not find any non repeated Character"))
+console.log("The first non-repeating Character: " + firstNonRepeatingChar("did not find any non repeated Character"))
 
 ///////   12. Remove Duplicate Characters in a string ////
 
@@ -247,7 +247,109 @@ function removeDuplicateString(str){
         if (charaCount[j] == 1){
             newstr.push(j)
         }
-        return newstr.join('')
+        
+    }
+    return newstr.join('')
+}
+console.log("Remove Duplicate: " + removeDuplicateString('Learn more javascript dude'))
+
+
+///////////////// 13.a Check Palindrome with methods ////////////
+///////////// This method checks the string against a string ////////////
+
+function isPalindrome(str){
+    var newStr = [];
+    newStr = str.split('').reverse().join('');
+    if (newStr == str){
+        console.log("Is Palindrome")      
+        } else if(newStr !== str) {
+                console.log("Not a Palindrome")
+            }
+    }
+
+
+isPalindrome("madam");
+
+///////////////// 13.b Check Palindrome with methods ////////////
+////////// This method is checking each character against itself in a string///////
+
+function isAlsoPalindrome(str){
+    for (i = 0; i < str.length; i++){
+        if(str[i] != str[str.length -1 -i]){
+            console.log(false);
+        }
+        console.log(true);
     }
 }
-console.log(removeDuplicateString('did not find any non repeated Character'))
+
+// isAlsoPalindrome("toyota")
+
+//////////////////////// 14. Random between 5 to 7 ////////////////
+
+function rand(min, max){
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log("Random Number:", rand(5, 7))
+
+
+///////////////////////// 15. Missing Number ///////////////////////
+//////////////// Key Insight: if you know an array is missing only one number then you can add what the sum of the full array would be and subtract the amount it acutally is to find the missing number
+/////////////// Please not that str is not required for the answer but is used only to console.log on the same line
+
+function missingNumber(str, arr){
+    var n = arr.length + 1;
+    var sum = 0;
+    var expectedSum = n * (n + 1)/2
+    for (var i = 0; i < arr.length; i++){
+        sum += arr[i]; 
+    }
+    var missing = expectedSum - sum;
+    console.log(str, missing)
+}
+
+missingNumber("Missing Number: ", [5, 2, 1, 3]);
+
+////////////// 16. Sum of Two  ////////////////////
+/////// From an unsorted array find out if any two numbers added together return a required number ////////
+// function sumFinder(arr, sum){
+//     for(var i = 0; i = arr.length - 1; i++){
+//         for(var j = 0; j = arr.length + 1; j++){
+//             if (arr[i] + arr[j] == sum){
+//                 console.log(true);
+//             } 
+            
+//         }
+//     }
+//     console.log(false)
+// }
+
+// sumFinder([1,1,3,2,1,7], 2)
+
+
+////////////////  17. Largest Sum //////////////////////////
+/////////////     This is not functioning properly only works when there are two elements and not an array of elements  //////////////
+function largestSum(arr){
+    var largest = arr[0];
+    var second = arr[1];
+    var i = 2;
+
+    if (arr.length < 2){
+        return null;
+    }
+    if (largest < second){
+        largest = arr[1];
+        second = arr[0];
+    }
+    for (; i < arr.length; i++){
+        if(arr[i] > largest){
+            second = largest;
+            largest = arr[i];
+        } else if (arr[i] > second) {
+            second = arr[i];
+        }
+        return largest + second;
+    }
+}
+
+console.log(largestSum([1,1,3,2,1,7]))
